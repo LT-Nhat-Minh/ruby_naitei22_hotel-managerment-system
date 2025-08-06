@@ -61,6 +61,10 @@ gem "image_processing", "1.12.2"
 
 gem "active_storage_validations", "0.9.8"
 
+gem "font-awesome-sass", "~> 6.0"
+
+gem "byebug"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html
   gem "debug", platforms: %i(mri mingw x64_mingw)
@@ -68,6 +72,7 @@ group :development, :test do
   gem "rubocop", "~> 1.26", require: false
   gem "rubocop-checkstyle_formatter", require: false
   gem "rubocop-rails", "~> 2.14.0", require: false
+  gem "byebug"
 end
 
 group :development do

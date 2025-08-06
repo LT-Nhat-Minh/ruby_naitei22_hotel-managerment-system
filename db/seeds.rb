@@ -11,15 +11,543 @@ User.create!(
   name: "Admin",
   email: "admin@gmail.com",
   password: "123",
-  password_confirmation: "123",
+  phone: "729-551-3035",
+  role: 1,
+  activated: true,
+  activated_at: Time.zone.now
 )
 
-10.times do |n|
-  User.create!(
-    name: "User #{n + 1}",
-    email: "user#{n + 1}@example.com",
-    password: "password",
-    password_confirmation: "password",
-  )
+User.create!(
+  name: "Dennis Foley",
+  email: "vickiwilliams@levy.com",
+  password: "Password@123",
+  phone: "523-468-9226x96295",
+  role: 0,
+  activated: true,
+  activated_at: Time.zone.now
+)
+
+User.create!(
+  name: "Jared Snyder",
+  email: "anthony41@lopez-fuller.com",
+  password: "Password@123",
+  phone: "306-359-9581x037",
+  role: 0,
+  activated: true,
+  activated_at: Time.zone.now
+)
+
+User.create!(
+  name: "Crystal Cox",
+  email: "jonesdouglas@gmail.com",
+  password: "Password@123",
+  phone: "+1-388-501-3262x5359",
+  role: 1,
+  activated: true,
+  activated_at: Time.zone.now
+)
+
+User.create!(
+  name: "Alan Boyer",
+  email: "douglasvaughn@yahoo.com",
+  password: "Password@123",
+  phone: "8809003047",
+  role: 0,
+  activated: true,
+  activated_at: Time.zone.now
+)
+
+RoomType.create!(
+  name: "Single",
+  description: "While speak also sort family without.",
+  price: 51
+)
+
+RoomType.create!(
+  name: "Double",
+  description: "Oil know rise if.",
+  price: 258
+)
+
+RoomType.create!(
+  name: "Suite",
+  description: "Truth of whole find he should.",
+  price: 120
+)
+
+Room.create!(
+  room_number: "R001",
+  room_type_id: 3,
+  status: 0,
+  description: "Serve itself national back.",
+  capacity: 1
+)
+
+Room.create!(
+  room_number: "R002",
+  room_type_id: 2,
+  status: 0,
+  description: "Evidence year threat anything. Why those talk relate.",
+  capacity: 3
+)
+
+Room.create!(
+  room_number: "R003",
+  room_type_id: 3,
+  status: 0,
+  description: "Less hot war music. Care officer only ready attorney which. They reduce customer follow card.",
+  capacity: 4
+)
+
+Room.create!(
+  room_number: "R004",
+  room_type_id: 1,
+  status: 0,
+  description: "State need can PM any. Light less tend capital training him.",
+  capacity: 2
+)
+
+Room.create!(
+  room_number: "R005",
+  room_type_id: 2,
+  status: 0,
+  description: "Leg result direction beyond. Near southern determine however point. Last thus then.",
+  capacity: 3
+)
+
+Amenity.create!(
+  name: "TV",
+  description: "Never final hard benefit budget."
+)
+
+Amenity.create!(
+  name: "Wi-Fi",
+  description: "College should lot push able."
+)
+
+Amenity.create!(
+  name: "AC",
+  description: "Three safe late."
+)
+
+Amenity.create!(
+  name: "Minibar",
+  description: "Start term can high point present."
+)
+
+Amenity.create!(
+  name: "Balcony",
+  description: "Crime anyone civil home thought our."
+)
+
+RoomAmenity.create!(
+  room_id: 1,
+  amenity_id: 3
+)
+
+RoomAmenity.create!(
+  room_id: 1,
+  amenity_id: 4
+)
+
+RoomAmenity.create!(
+  room_id: 1,
+  amenity_id: 2
+)
+
+RoomAmenity.create!(
+  room_id: 2,
+  amenity_id: 1
+)
+
+RoomAmenity.create!(
+  room_id: 2,
+  amenity_id: 3
+)
+
+RoomAmenity.create!(
+  room_id: 2,
+  amenity_id: 4
+)
+
+RoomAmenity.create!(
+  room_id: 3,
+  amenity_id: 1
+)
+
+RoomAmenity.create!(
+  room_id: 3,
+  amenity_id: 5
+)
+
+RoomAmenity.create!(
+  room_id: 3,
+  amenity_id: 4
+)
+
+RoomAmenity.create!(
+  room_id: 4,
+  amenity_id: 2
+)
+
+RoomAmenity.create!(
+  room_id: 4,
+  amenity_id: 3
+)
+
+RoomAmenity.create!(
+  room_id: 4,
+  amenity_id: 4
+)
+
+RoomAmenity.create!(
+  room_id: 5,
+  amenity_id: 4
+)
+
+RoomAmenity.create!(
+  room_id: 5,
+  amenity_id: 3
+)
+
+RoomAmenity.create!(
+  room_id: 5,
+  amenity_id: 1
+)
+
+Booking.create!(
+  user_id: 4,
+  booking_code: "Pb0189",
+  booking_date: Time.zone.now,
+  status: 0
+)
+
+Booking.create!(
+  user_id: 2,
+  booking_code: "ws6537",
+  booking_date: Time.zone.now,
+  status: 0
+)
+
+Booking.create!(
+  user_id: 1,
+  booking_code: "ru4855",
+  booking_date: Time.zone.now,
+  status: 0
+)
+
+Request.create!(
+  booking_id: 1,
+  check_in: "2025-08-08 02:20:41.402071",
+  check_out: "2025-08-13 02:20:41.402071",
+  number_of_guests: 3,
+  status: 0,
+  note: "Help man plan bank look generation."
+)
+
+Request.create!(
+  booking_id: 2,
+  check_in: "2025-08-14 02:20:41.402136",
+  check_out: "2025-08-19 02:20:41.402136",
+  number_of_guests: 1,
+  status: 0,
+  note: "Move generation officer trade reduce police finally cell."
+)
+
+Request.create!(
+  booking_id: 3,
+  check_in: "2025-08-14 02:20:41.402159",
+  check_out: "2025-08-18 02:20:41.402159",
+  number_of_guests: 4,
+  status: 0,
+  note: "Plant in huge what stay watch."
+)
+
+Review.create!(
+  user_id: 1,
+  request_id: 2,
+  rating: 4,
+  comment: "Have present statement leave.",
+  review_status: 1
+)
+
+Review.create!(
+  user_id: 2,
+  request_id: 2,
+  rating: 4,
+  comment: "Good source clearly economic tend. Century Mrs message yard writer development.",
+  review_status: 1
+)
+
+Review.create!(
+  user_id: 5,
+  request_id: 3,
+  rating: 4,
+  comment: "Or voice rise Mrs. Home but begin parent pass better account. Hour agent expert budget pass accept positive according.",
+  review_status: 1
+)
+
+# --- Thêm Booking, Request, Review cho user_id = 1 ---
+
+Booking.create!(
+  user_id: 1,
+  booking_code: "cd5279",
+  booking_date: "2025-05-21T09:58:34",
+  status: 0
+)
+
+Booking.create!(
+  user_id: 1,
+  booking_code: "cd1448",
+  booking_date: "2025-07-23T09:58:34",
+  status: 4
+)
+
+Booking.create!(
+  user_id: 1,
+  booking_code: "cd1773",
+  booking_date: "2025-07-29T09:58:34",
+  status: 0
+)
+
+Booking.create!(
+  user_id: 1,
+  booking_code: "cd7203",
+  booking_date: "2025-05-14T09:58:34",
+  status: 3
+)
+
+Booking.create!(
+  user_id: 1,
+  booking_code: "cd6487",
+  booking_date: "2025-07-30T09:58:34",
+  status: 4
+)
+
+Booking.create!(
+  user_id: 1,
+  booking_code: "cd1654",
+  booking_date: "2025-07-05T09:58:34",
+  status: 4
+)
+
+Booking.create!(
+  user_id: 1,
+  booking_code: "cd2347",
+  booking_date: "2025-07-02T09:58:34",
+  status: 3
+)
+
+Booking.create!(
+  user_id: 1,
+  booking_code: "cd6615",
+  booking_date: "2025-04-30T09:58:34",
+  status: 4
+)
+
+Booking.create!(
+  user_id: 1,
+  booking_code: "cd3617",
+  booking_date: "2025-07-18T09:58:34",
+  status: 2
+)
+
+Booking.create!(
+  user_id: 1,
+  booking_code: "cd3485",
+  booking_date: "2025-07-01T09:58:34",
+  status: 1
+)
+
+Request.create!(
+  booking_id: 4,
+  check_in: "2025-05-22T09:58:34",
+  check_out: "2025-05-25T09:58:34",
+  number_of_guests: 4,
+  status: 0,
+  note: "Auto-generated request note 0"
+)
+
+Request.create!(
+  booking_id: 5,
+  check_in: "2025-07-24T09:58:34",
+  check_out: "2025-07-27T09:58:34",
+  number_of_guests: 5,
+  status: 0,
+  note: "Auto-generated request note 1"
+)
+
+Request.create!(
+  booking_id: 6,
+  check_in: "2025-07-30T09:58:34",
+  check_out: "2025-08-01T09:58:34",
+  number_of_guests: 2,
+  status: 0,
+  note: "Auto-generated request note 2"
+)
+
+Request.create!(
+  booking_id: 7,
+  check_in: "2025-05-15T09:58:34",
+  check_out: "2025-05-18T09:58:34",
+  number_of_guests: 4,
+  status: 0,
+  note: "Auto-generated request note 3"
+)
+
+Request.create!(
+  booking_id: 8,
+  check_in: "2025-07-31T09:58:34",
+  check_out: "2025-08-03T09:58:34",
+  number_of_guests: 1,
+  status: 0,
+  note: "Auto-generated request note 4"
+)
+
+Request.create!(
+  booking_id: 9,
+  check_in: "2025-07-06T09:58:34",
+  check_out: "2025-07-08T09:58:34",
+  number_of_guests: 2,
+  status: 0,
+  note: "Auto-generated request note 5"
+)
+
+Request.create!(
+  booking_id: 10,
+  check_in: "2025-07-03T09:58:34",
+  check_out: "2025-07-05T09:58:34",
+  number_of_guests: 4,
+  status: 0,
+  note: "Auto-generated request note 6"
+)
+
+Request.create!(
+  booking_id: 3,
+  check_in: "2025-05-01T09:58:34",
+  check_out: "2025-05-05T09:58:34",
+  number_of_guests: 4,
+  status: 0,
+  note: "Auto-generated request note 7"
+)
+
+Request.create!(
+  booking_id: 3,
+  check_in: "2025-07-19T09:58:34",
+  check_out: "2025-07-21T09:58:34",
+  number_of_guests: 1,
+  status: 0,
+  note: "Auto-generated request note 8"
+)
+
+Request.create!(
+  booking_id: 4,
+  check_in: "2025-07-02T09:58:34",
+  check_out: "2025-07-04T09:58:34",
+  number_of_guests: 3,
+  status: 0,
+  note: "Auto-generated request note 9"
+)
+
+Review.create!(
+  user_id: 1,
+  request_id: 4,
+  rating: 5,
+  comment: "Auto-generated review 0",
+  review_status: 1
+)
+
+Review.create!(
+  user_id: 1,
+  request_id: 5,
+  rating: 4,
+  comment: "Auto-generated review 1",
+  review_status: 1
+)
+
+Review.create!(
+  user_id: 1,
+  request_id: 6,
+  rating: 3,
+  comment: "Auto-generated review 2",
+  review_status: 1
+)
+
+Review.create!(
+  user_id: 1,
+  request_id: 7,
+  rating: 5,
+  comment: "Auto-generated review 3",
+  review_status: 1
+)
+
+Review.create!(
+  user_id: 1,
+  request_id: 8,
+  rating: 4,
+  comment: "Auto-generated review 4",
+  review_status: 1
+)
+
+Review.create!(
+  user_id: 1,
+  request_id: 9,
+  rating: 5,
+  comment: "Auto-generated review 5",
+  review_status: 1
+)
+
+Review.create!(
+  user_id: 1,
+  request_id: 10,
+  rating: 4,
+  comment: "Auto-generated review 6",
+  review_status: 1
+)
+
+Review.create!(
+  user_id: 1,
+  request_id: 11,
+  rating: 3,
+  comment: "Auto-generated review 7",
+  review_status: 1
+)
+
+Review.create!(
+  user_id: 1,
+  request_id: 12,
+  rating: 5,
+  comment: "Auto-generated review 8",
+  review_status: 1
+)
+
+Review.create!(
+  user_id: 1,
+  request_id: 13,
+  rating: 4,
+  comment: "Auto-generated review 9",
+  review_status: 1
+)
+
+Room.find_each do |room|
+  10.times do |i|
+    RoomAvailability.create!(
+      room: room,
+      available_date: Date.today + i.days,
+      price: rand(500_000..1_500_000)
+    )
+  end
 end
 
+
+Request.find_each do |request|
+  # Chọn ngẫu nhiên 2 room_availabilities cho request
+  room_availabilities = RoomAvailability.order("RAND()").limit(2)
+  
+  room_availabilities.each do |availability|
+    RoomAvailabilityRequest.create!(
+      request: request,
+      room_availability: availability
+    )
+  end
+end

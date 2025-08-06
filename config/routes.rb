@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   scope "(:locale)", locale: /en|vi/ do
     root to: "static_pages#home"
-
-    # static pages
     get "/static_pages/home", to: "static_pages#home", as: "home"
-    get "/static_pages/help", to: "static_pages#help", as: "help"
-    get "/static_pages/contact", to: "static_pages#contact", as: "contact"
 
     # sign up
     get "/signup", to: "users#new"
@@ -17,13 +12,23 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
 
+    # user and nested resources
+    resources :users, only: %i[new create show edit update] do
+      resources :bookings, only: %i[index]
+      resources :reviews, only: %i[index destroy]
+      resource :password, only: %i[create edit update]
+    end
+
     # Account Activations
     resources :account_activations, only: :edit
 
-    resources :users, only: :show
-
     resources :microposts
+
+    resources :requests do
+      member do
+        patch :cancel
+      end
+    end
+    
   end
-  # Defines the r oot path route ("/")
-  # root "articles#index"
 end

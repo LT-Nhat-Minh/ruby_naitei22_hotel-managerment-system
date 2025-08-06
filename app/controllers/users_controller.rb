@@ -1,16 +1,22 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: %i(edit show update)
 
+  # GET /users
   def index
     @users = User.recent
   end
 
-  def show; end
+  # GET /users/:id
+  def show
+    @reviews = @user.reviews.includes(request: :booking)
+  end
 
+  # GET /signup
   def new
     @user = User.new
   end
 
+  # POST /signup
   def create
     @user = User.new user_params
 
@@ -20,8 +26,22 @@ class UsersController < ApplicationController
       flash[:info] = t(".activate")
       redirect_to root_url, status: :see_other
     else
-      flash[:error] = t(".failure")
+      flash[:danger] = t(".failure")
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  # GET /users/:id/edit
+  def edit; end
+
+  # PUT /users/:id
+  def update
+    if @user.update(user_params)
+      flash[:success] = t(".success")
+      redirect_to @user
+    else
+      flash[:danger] = t(".failure")
+      render :edit, status: :unprocessable_entity
     end
   end
 

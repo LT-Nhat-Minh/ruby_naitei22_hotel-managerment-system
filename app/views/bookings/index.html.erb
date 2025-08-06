@@ -1,0 +1,67 @@
+<% content_for :sidebar_title do %>
+    <%= t("users.sidebar.booking_history") %>
+<% end %>
+
+<div class="account-container" style="display: flex; gap: 24px;">
+    <%= render "shared/account_sidebar" %>
+    <div class="account-content" style="flex: 1;">
+        <div class="bookings-list">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th data-column="booking-id" data-order="asc" data-sortable>Booking ID</th>
+                        <th data-column="room" data-order="asc" data-sortable>Room</th>
+                        <th data-column="price" data-order="asc" data-sortable>Price</th>
+                        <th data-column="status" data-order="asc" data-sortable>Status</th>
+                        <th data-column="created" data-order="asc" data-sortable>Created At</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @bookings.each do |booking| %>
+                        <tr>
+                            <td><%= booking.booking_code %></td>
+                            <td>
+                                <strong>
+                                    <%= booking.room_types.limit(2).map(&:name).join(", ") %>
+                                    <%= ", ..." if booking.room_types.count > 2 %>
+                                </strong>
+                            </td>
+                            <td class="price">
+                                <%= number_to_currency(
+                                    booking_total_price(booking),
+                                    unit: "",
+                                    delimiter: ".",
+                                    precision: 0
+                                ) %>
+                            </td>
+                            <td class="status">
+                                <%= render "shared/status_badge", status: booking.status %>
+                            </td>
+                            <td class="created-at"><%= l(booking.created_at.to_date) %></td>
+                            <td>
+                                <button 
+                                    type="button" 
+                                    class="btn btn-primary open-modal" 
+                                    data-modal-id="bookingModal-<%= booking.id %>"
+                                    data-booking="<%= booking.to_json %>"
+                                >
+                                    Details
+                                </button>
+
+                                <% if booking.status_draft? || booking.status_pending? %>
+                                    <%= link_to "Cancel", "#", method: :patch, class: "btn btn-danger" %>
+                                <% else %>
+                                    <%= content_tag :button, "Cancel", class: "btn btn-secondary", disabled: true %>
+                                <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            <% @bookings.each do |booking| %>
+                <%= render "bookings/requests_modal", booking: booking %>
+            <% end %>
+        </div>
+    </div>
+</div>
