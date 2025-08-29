@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :room_availability do
     association :room
-    available_date { Date.today }
-    price { 200 }
+    sequence(:available_date) { |n| Date.today + n }
+    price { 100 }
     is_available { true }
   end
 end

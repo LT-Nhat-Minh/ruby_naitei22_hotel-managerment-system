@@ -64,22 +64,22 @@ class Admin::RoomTypesController < Admin::BaseController
   end
 
   def handle_successful_creation
-    flash[:success] = t(".success_message")
+    flash[:success] = t("admin.room_types.create_success")
     redirect_to admin_room_types_path
   end
 
   def handle_failed_creation
-    flash.now[:danger] = t(".error_message")
+    flash.now[:danger] = t("admin.room_types.create_error")
     render :new, status: :unprocessable_entity
   end
 
   def handle_successful_update
-    flash[:success] = t(".success_message")
+    flash[:success] = t("admin.room_types.update_success")
     redirect_to admin_room_types_path
   end
 
   def handle_failed_update
-    flash.now[:danger] = t(".error_message")
+    flash.now[:danger] = t("admin.room_types.update_error")
     render :edit, status: :unprocessable_entity
   end
 end

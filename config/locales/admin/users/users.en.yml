@@ -1,6 +1,7 @@
 en:
   admin:
     users:
+      not_found: "User not found"
       index:
         title: "Users"
         list_title: "List of Users (%{count})"

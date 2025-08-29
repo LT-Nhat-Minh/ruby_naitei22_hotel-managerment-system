@@ -73,7 +73,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def handle_failed_update
-    flash.now[:danger] = t(".failure")
+    flash[:danger] = t(".failure")
     render :edit, status: :unprocessable_entity
   end
 end

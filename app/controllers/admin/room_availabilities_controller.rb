@@ -65,12 +65,12 @@ class Admin::RoomAvailabilitiesController < Admin::BaseController
   end
 
   def handle_successful_update
-    flash[:success] = t(".success")
+    flash[:success] = t("admin.room_availabilities.update_success")
     redirect_to admin_room_availabilities_path
   end
 
   def handle_failed_update
-    flash.now[:danger] = t(".failure")
+    flash.now[:danger] = t("admin.room_availabilities.update_failure")
     render :edit, status: :unprocessable_entity
   end
 end

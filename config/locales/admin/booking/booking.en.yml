@@ -1,6 +1,7 @@
 en:
   admin:
     bookings:
+      success: "Operation completed successfully."
       not_found: "No bookings found"
 
       index:

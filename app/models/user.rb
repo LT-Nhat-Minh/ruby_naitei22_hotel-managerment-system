@@ -165,4 +165,25 @@ format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
   end
+
+  def user_role_user user
+    can :read, User, id: user.id
+    can :update, User, id: user.id
+  end
+
+  def user_role_booking user
+    can :create, Booking, user_id: user.id
+    can :read, Booking, user_id: user.id
+    can :update, Booking, user_id: user.id
+  end
+
+  def user_role_request_review user
+    can :create, Request, booking: {user_id: user.id}
+    can :read, Request, booking: {user_id: user.id}
+    can :update, Request, booking: {user_id: user.id}
+
+    can :create, Review, request: {booking: {user_id: user.id}}
+    can :read, Review, request: {booking: {user_id: user.id}}
+    can :update, Review, request: {booking: {user_id: user.id}}
+  end
 end

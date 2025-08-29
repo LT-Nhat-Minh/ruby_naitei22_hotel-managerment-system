@@ -1,6 +1,11 @@
 vi:
   admin:
     room_types:
+      create_success: "Tạo loại phòng thành công."
+      create_error: "Tạo loại phòng thất bại. Vui lòng kiểm tra lại thông tin."
+      update_success: "Cập nhật loại phòng thành công."
+      update_error: "Cập nhật loại phòng thất bại. Vui lòng kiểm tra lại thông tin."
+      destroy_success: "Xoá loại phòng thành công."
       load_room_type:
         not_found: "Không tìm thấy loại phòng."
 

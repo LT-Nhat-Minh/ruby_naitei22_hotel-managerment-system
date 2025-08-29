@@ -1,6 +1,7 @@
 vi:
   admin:
     bookings:
+      success: "Cập nhật booking thành công"
       not_found: "Không tìm thấy booking nào"
 
       index:

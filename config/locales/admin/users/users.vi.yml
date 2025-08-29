@@ -1,6 +1,7 @@
 vi:
   admin:
     users:
+      not_found: "Không tìm thấy người dùng"
       index:
         title: "Người dùng"
         list_title: "Danh sách người dùng (%{count})"
