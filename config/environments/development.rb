@@ -79,6 +79,6 @@ Rails.application.configure do
   address: ENV["MAILTRAP_ADDRESS"],
   host: ENV["MAILTRAP_HOST"],
   port: ENV["MAILTRAP_PORT"],
-  authentication: :plain
+  authentication: :login
 }
 end

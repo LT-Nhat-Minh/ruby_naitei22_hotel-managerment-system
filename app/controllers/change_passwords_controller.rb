@@ -1,15 +1,18 @@
-class PasswordsController < ApplicationController
-  before_action :set_user, only: %i(edit update)
-  before_action :check_authen, only: :update
+class ChangePasswordsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_user
 
   # GET (/:locale)/users/:user_id/password/edit(.:format)
-  def edit; end
+  def edit
+    @current_user = current_user
+  end
 
   # PUT (/:locale)/users/:user_id/password(.:format)
   def update
-    if @user.update(password_params)
+    if @user.update(change_password_params)
+      bypass_sign_in(@user)
       flash[:success] = t(".success")
-      redirect_to user_password_path(@user)
+      redirect_to edit_user_change_password_path(@user)
     else
       flash.now[:danger] = t(".wrong_password")
       render :edit, status: :unprocessable_entity
@@ -26,15 +29,7 @@ class PasswordsController < ApplicationController
     redirect_to root_url
   end
 
-  def password_params
+  def change_password_params
     params.require(:user).permit(:password, :password_confirmation)
-  end
-
-  def check_authen
-    current_password = params.dig(:user, :current_password)
-    return if @user.authenticate(current_password)
-
-    flash.now[:danger] = t(".invalid_current_password")
-    render :edit, status: :unprocessable_entity
   end
 end

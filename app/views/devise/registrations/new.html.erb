@@ -1,0 +1,19 @@
+<% provide :title, t("signup.title") %>
+
+<div class="form-signup">
+  <div class="container">
+    <h1><%= t("signup.title") %></h1>
+
+    <div class="form">
+      <%= form_for @user, url: user_registration_path do |f| %>
+        <%= render "form", f: f %>
+        
+        <%= f.submit t("signup.submit"), class: "btn btn-submit" %>
+      <% end %>
+
+      <div class="already-account">
+        <%= t("signup.already_account") %> <%= link_to t("signup.login"), new_user_session_path %>
+      </div>
+    </div>
+  </div>
+</div>

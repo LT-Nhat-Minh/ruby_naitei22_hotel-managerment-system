@@ -11,11 +11,10 @@ require 'date'
 User.create!(
   name: "Admin",
   email: "admin@gmail.com",
-  password: "123",
+  password: "123456",
   phone: "729-551-3035",
   role: 1,
-  activated: true,
-  activated_at: Time.zone.now
+  confirmed_at: Time.zone.now
 )
 
 User.create!(
@@ -24,8 +23,7 @@ User.create!(
   password: "Password@123",
   phone: "523-468-9226x96295",
   role: 0,
-  activated: true,
-  activated_at: Time.zone.now
+  confirmed_at: Time.zone.now
 )
 
 User.create!(
@@ -34,8 +32,7 @@ User.create!(
   password: "Password@123",
   phone: "306-359-9581x037",
   role: 0,
-  activated: true,
-  activated_at: Time.zone.now
+  confirmed_at: Time.zone.now
 )
 
 User.create!(
@@ -44,8 +41,7 @@ User.create!(
   password: "Password@123",
   phone: "+1-388-501-3262x5359",
   role: 1,
-  activated: true,
-  activated_at: Time.zone.now
+  confirmed_at: Time.zone.now
 )
 
 User.create!(
@@ -54,8 +50,7 @@ User.create!(
   password: "Password@123",
   phone: "8809003047",
   role: 0,
-  activated: true,
-  activated_at: Time.zone.now
+  confirmed_at: Time.zone.now
 )
 
 RoomType.create!(

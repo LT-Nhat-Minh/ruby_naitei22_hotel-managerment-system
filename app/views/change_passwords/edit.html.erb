@@ -6,7 +6,7 @@
   <%= render "shared/account_sidebar" %>
 
   <div class="account-content">
-    <%= form_for @user, url: user_password_path(@user), method: :patch, html: { class: "change-password-form", autocomplete: "off" } do |f| %>
+    <%= form_for @user, url: user_change_password_path(@user), method: :patch, html: { class: "change-password-form", autocomplete: "off" } do |f| %>
       <div class="form-group">
         <label><%= t("users.form.current_password") %></label>
         <div class="input-wrapper">

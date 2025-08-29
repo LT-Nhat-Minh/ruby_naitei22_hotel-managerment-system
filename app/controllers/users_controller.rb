@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: %i(edit show update)
 
   # GET /users
@@ -11,34 +12,16 @@ class UsersController < ApplicationController
     @reviews = @user.reviews.includes(request: :booking)
   end
 
-  # GET /signup
-  def new
-    @user = User.new
-  end
-
-  # POST /signup
-  def create
-    @user = User.new user_params
-
-    if @user.save
-      log_out
-      @user.send_activation_email
-      flash[:info] = t(".activate")
-      redirect_to root_url, status: :see_other
-    else
-      flash[:danger] = t(".failure")
-      render :new, status: :unprocessable_entity
-    end
-  end
-
   # GET /users/:id/edit
-  def edit; end
+  def edit
+    @current_user = current_user
+  end
 
   # PUT /users/:id
   def update
     if @user.update(user_params)
       flash[:success] = t(".success")
-      render :edit, status: :see_other
+      redirect_to edit_user_registration_path, status: :see_other
     else
       flash[:danger] = t(".failure")
       render :edit, status: :unprocessable_entity

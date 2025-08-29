@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!
   before_action :load_room, only: %i(show calculate_price)
   before_action :set_current_booking, only: %i(show)
 
@@ -11,6 +12,7 @@ class RoomsController < ApplicationController
       .by_price_range(params[:price_range])
       .sorted(params[:sort_by])
     )
+    @current_user = current_user
   end
 
   # GET (/:locale)/rooms/id
@@ -55,7 +57,7 @@ class RoomsController < ApplicationController
   end
 
   def set_current_booking
-    return unless logged_in?
+    return unless user_signed_in?
 
     @current_booking = current_user.bookings.find_or_create_by(status: :draft)
   end
